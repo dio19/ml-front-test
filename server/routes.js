@@ -24,7 +24,6 @@ const formattedQuery = (arrayToGetData, individualItem) => {
     };
 
     const formattedImage = (arrayPictures) => {
-
         let niceImage = arrayPictures.find(picture => {
             let arraySize = picture.size.split("x");
             return arraySize[0] > 400 && arraySize[1] > 400
@@ -48,7 +47,6 @@ const formattedQuery = (arrayToGetData, individualItem) => {
             sold_quantity: arrayToGetData.sold_quantity,
             free_shipping: arrayToGetData.shipping.free_shipping,
             state_name: (!individualItem) ? arrayToGetData.address.state_name : ''
-
         };
 
     if(individualItem){
@@ -188,7 +186,9 @@ router.get('/items/:id', function (req, res) {
 
 
             })
-            .catch(e => res.status(503).json(e))
+            .catch((e) => {
+                res.status(503).json(e)
+            })
 
 
     }

@@ -1,0 +1,44 @@
+{
+  "name": "ml-front-test",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/react": "^9.3.1",
+    "@testing-library/user-event": "^7.1.2",
+    "concurrently": "^5.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "history": "^4.10.1",
+    "node-sass": "^4.13.0",
+    "nodemon": "^1.19.4",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "request-promise": "^4.2.6",
+    "wait-for-expect": "^3.0.1"
+  },
+  "scripts": {
+    "all": "concurrently \"npm start\" \"npm run server\"",
+    "server": "nodemon server/index.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "concurrently \"npm run server\" \"react-scripts test\"",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
