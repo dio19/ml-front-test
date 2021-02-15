@@ -1,3 +1,5 @@
+@import "variables";
+
 .item-detail-container{
   max-width: 1024px;
   margin: 20px auto;
@@ -22,18 +24,18 @@
 
     .item-detail-condition-sold{
       font-size: 12px;
-      color: #888888;
+      color: $lightGray
     }
 
     .item-detail-title{
-      color: #333333;
+      color: $blackLetters;
       font-size: 20px;
       margin-bottom: 0;
       margin-top: 10px;
     }
 
     .item-detail-price{
-      color: #333333;
+      color: $blackLetters;
       font-size: 32px;
       font-weight: normal;
       margin-top: 10px;
@@ -41,7 +43,7 @@
 
     .item-detail-buy{
       padding: 10px;
-      background-color: #3483FA;
+      background-color: $lightBlueColor;
       color: white;
       border-radius: 4px;
       border: none;
@@ -63,5 +65,5 @@
 
 .item-detail-description-text{
   font-size: 14px;
-  color: #444;
+  color: $gray
 }

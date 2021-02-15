@@ -1,9 +1,11 @@
+@import "variables";
+
 .item-container{
   padding: 10px;
   background-color: white;
 
   &:not(:last-child){
-    border-bottom: solid 1px #cccccc;
+    border-bottom: solid 1px $lightGray;
   }
 
   img {
@@ -75,7 +77,7 @@
 .item-location{
   p{
     text-align: center;
-    color: #888;
+    color: $gray;
     font-size: 14px;
     position: relative;
   }
