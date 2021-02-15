@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-import './styles/App.scss';
 import { MlContext } from './context/MlContext';
-
-import { Searcher } from "./components/Searcher";
+import SearchResults from "./pages/SearchResults";
 import { Switch, Route } from 'react-router-dom';
-import SearchResults from "./components/SearchResults";
+import Searcher from "./components/Searcher";
 import ItemDetail from "./components/ItemDetail";
 import Loader from './components/tools/Loader';
 

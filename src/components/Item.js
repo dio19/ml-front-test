@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../styles/Item.scss';
+import '../styles/item.scss';
 import * as utils from '../utils';
 
 export default function Item({info, categories}) {

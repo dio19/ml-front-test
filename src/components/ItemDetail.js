@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import '../styles/ItemDetail.scss';
+import '../styles/itemDetail.scss';
 import * as utils from '../utils';
 import { MlContext } from '../context/MlContext';
 import Message from "./tools/Message";

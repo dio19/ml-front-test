@@ -1,5 +1,5 @@
 import React from "react";
-import '../../styles/Breadcrumb.scss'
+import '../../styles/breadcrumb.scss'
 
 export default function Breadcrumb({ categories }) {
     let i = 0

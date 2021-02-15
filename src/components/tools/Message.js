@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/Message.scss';
+import '../../styles/message.scss';
 
 export default function Message({ error }){
     return (

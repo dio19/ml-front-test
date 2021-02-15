@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
-import '../styles/Searcher.scss';
+import { Link } from 'react-router-dom';
+import searcherCss from '../styles/searcher.scss';
 import logo from '../assets/Logo_ML.png';
 
-export function Searcher({ onSubmit }) {
+export default function Searcher({ onSubmit }) {
 
     const [searchValue, setSearchValue] = useState('');
 
@@ -17,15 +17,39 @@ export function Searcher({ onSubmit }) {
         setSearchValue('')
     };
 
-    return <div className="background-banner">
-        <form className="search-box-container" onSubmit={(event) => handleSubmit(event)}>
-            <Link to={'/'}>
-                <img src={logo} alt="Logo Mercado Libre" />
-            </Link>
-            <input className="search-box-input" type="text" placeholder="Nunca dejes de buscar"
-                   value={searchValue} onChange={handleChange}/>
-            <button type="submit" className="search-box-btn" data-testid="search-box-icon"/>
-        </form>
-    </div>;
+    return (
+        <nav id="navbar-ml">
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <div className="row">
+                            <div className=" col-3 col-sm-2 col-md-1 no-padd-xs-phone">
+                                <Link to={'/'}>
+                                    <div id='box-logo-navbar'>
+                                        <img src={logo} alt="Logo Mercado Libre" />
+                                    </div>
+                                </Link>
+                            </div>
+                            <div className=" col-9 col-sm-10 col-md-11 no-padd-xs-phone">
+                                <div id="box-input-search">
+                                    <form onSubmit={(event) => handleSubmit(event)}>
+                                        <input type="text" placeholder="Nunca dejes de buscar" value={searchValue} onChange={handleChange}/>
+                                        <button id="button-search" type="submit"><img src=".././assets/ic_Search.png" alt=""/></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style jsx lang="scss" scoped>{
+
+            `
+            ${searcherCss}
+            `
+            }
+            </style>
+        </nav>
+    )
 
 }

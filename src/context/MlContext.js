@@ -32,10 +32,12 @@ function MlProvider({defaultValue = [], children}) {
 
     const getResults = (query) => {
         setLoading(true);
+        console.log('query', query)
         fetch(`http://localhost:4000/api/items?q=${query}`)
             .then(response => response.json())
             .then(response => {
                 if (response === 'Not found') {
+                    console.log('entre')
                     console.error(response);
                     setLoading(false);
                     setResults({error: 'No hay publicaciones que coincidan con tu búsqueda.'});
