@@ -1,45 +1,56 @@
-import React, { useContext, useEffect } from 'react';
-import '../styles/itemDetail.scss';
-import * as utils from '../utils';
-import { MlContext } from '../context/MlContext';
-import Message from "./tools/Message";
-import Loader from "./tools/Loader";
+import React from 'react';
+import '../styles/item.scss';
 
-export default function ItemDetail(props) {
+export default function ItemDetail({ data }) {
 
-    const id = props.match.params.id;
-    const { getItem, dataItem } = useContext(MlContext);
-    
-    useEffect(() => {
-        if(dataItem.data.id && id && id !== dataItem.data.id){
-            getItem(id)
-        } else if (!dataItem.data.id){
-            getItem(id)
-        }
-    }, [dataItem.data.id, getItem, id])
+    return (
+        <div className="row">
+            <div className="col-12" id="content-item">
+                <div id="content-image-and-price">
+                    <div id="sub-content-image">
+                        <img  src={data.picture} alt={data.title} className="w-100-phone img-item"/>
+                    </div>
+                    <div id='box-data-item'>
+                        <div id="sub-box-data-item" className="w-100-phone">
 
-    return dataItem.error ? <Message error={dataItem.error} message={dataItem.error} /> :
-    dataItem.data.id ? <div className={'item-detail-container'}>
-        <div className={'item-detail-first-row'}>
-            <div className={'item-detail-img-container'}>
-                <img src={dataItem.data.picture} alt={dataItem.data.title}/>
-            </div>
-            <div className={'item-detail-info'}>
-                <p className={'item-detail-condition-sold'}>
-                    {`${dataItem.data.condition === 'new' ? 'Nuevo' : 'Usado'} - ${dataItem.data.sold_quantity} vendidos`}
-                </p>
-                <h5 className={'item-detail-title'}>{dataItem.data.title}</h5>
-                <h3 className={'item-detail-price'}>
-                    {utils.formatPrice(dataItem.data.price)}
-                    {dataItem.data.price.decimals ?
-                        <span className={'item-price-decimals'}>{dataItem.data.price.decimals}</span> : null}
-                </h3>
-                <button className={'item-detail-buy'}>Comprar</button>
-            </div>
+                            <div id="box-condition-and-selled-item">
+                                {data.condition} - {data.sold_quantity} Vendidos
+                            </div>
+                            <div id="box-title-item">
+                                {data.title}
+                            </div>
+                            <div id="box-price-item">
+            <span>
+                $ {data.price.amount} <span>{data.price.decimals}</span>
+            </span>
+
+                            </div>
+
+                            </div>
+                            <div>
+                                <button id="btn-buy-item">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                    {data.description ?
+                        <div  id="box-description-item" className="w-100-phone img-item">
+                            <div  >
+                                <div >
+                                    <div  id='title-description-item'>Descripcion del producto</div>
+                                </div>
+                                <div >
+                                    <div  id="content-description-item" >
+
+                                        {data.description}
+                                    </div>
+                                </div>
+                            </div>
+                        </div> : <div>
+                            Este producto no tiene descripcion
+                        </div>}
+
+                </div>
         </div>
-        <div className={'item-detail-description'}>
-            <p className={'item-detail-description-title'}>Descripción del producto</p>
-            <p className={'item-detail-description-text'}>{dataItem.data.description}</p>
-        </div>
-    </div> : <Loader />
+
+    )
 };

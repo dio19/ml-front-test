@@ -1,85 +1,113 @@
-@import "variables";
+@import 'variables';
+$width-image-item:680px;
 
-.item-container{
-  padding: 10px;
-  background-color: white;
-
-  &:not(:last-child){
-    border-bottom: solid 1px $lightGray;
-  }
-
-  img {
-    width: 180px;
-    height: 180px;
-    border-radius: 4px;
-  }
-
-  @media(max-width: 480px){
-    img {
-      width: 100px;
-      height: 100px;
-    }
-  }
+#box-price-item>span>span{
+  font-size:23px;
+  vertical-align: super;
 }
 
-.item-info{
+#content-item{
+  background-color:white;
+  padding:$pixel32;
+}
+
+#box-condition-and-selled-item{
+  margin-top:$pixel32;
+  margin-bottom:$pixel16;
+
+}
+#box-title-item{
+  color:$blackLetters;
+  font-weight: bold;
+  font-size:$pixel24;
+}
+#box-price-item{
+  font-weight: bold;
+  margin-top:$pixel32;
+  font-size:$pixel46;
+  margin-bottom:$pixel32;
+  color:$blackLetters;
+}
+#content-image-and-price{
   display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+#box-data-item{
+
+  width:1076px-$width-image-item;
+  padding-left: 20px;
+}
+#btn-buy-item{
+  color:white;
+  background-color:$lightBlueColor;
+  width:100%;
+  border: none;
+  border-radius: 4px;
+  padding: 9px;
+  cursor: pointer;
+}
+#sub-box-data-item{
+  max-width: 70%;
+}
+#box-description-item{
+  width: $width-image-item;
+   margin-top: 8%;
+}
+#title-description-item{
+  color:$blackLetters;
+  font-size: $pixel28;
+}
+#content-description-item{
+  font-size: $pixel16;
+  color: $lightGray;
+  padding-top: $pixel32;
+  padding-bottom: $pixel32;
+  overflow: hidden;
 }
 
-.item-general-info{
-  flex: 9;
-  margin-left: 10px;
-}
-
-.item-title{
-  text-decoration: none;
-  color: initial;
-}
-
-@media(max-width: 480px){
-  .item-title p{
-    font-size: 14px;
+@media (min-width: 1202px){
+  .img-item{
+    width:$width-image-item;
   }
 }
 
-.item-location{
-  flex: 1;
-}
-
-.item-price{
-  display: inline-block;
-  font-size: 22px;
-}
-
-@media(max-width: 480px){
-  .item-price{
-    margin: 10px 0;
+@media (max-width: $laptop-xs){
+  .img-item {
+    width: 100%!important;
+  }
+  #box-data-item{
+    width: 50%;
+  }
+  #sub-content-image{
+    width: 50%;
   }
 }
+@media (max-width: 990px){
+  #box-price-item > span > span{font-size: 16px;}
+  #box-price-item{
+    font-size: $pixel24;
+  }
 
-.item-price-decimals{
-  font-size: 12px;
-  position: relative;
-  bottom: 7px;
+  #box-title-item{font-size: $pixel16}
 }
+@media (max-width: $break-tablet) {
+  #sub-box-data-item{max-width: 100%}
 
-.item-price-free-shipping{
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  left: 5px;
-  top: 2px;
-  width: 20px;
-  height: 20px;
-  background: no-repeat url("/../assets/ic_shipping.png");
 }
+@media (max-width: $break-big-phone){
+  #content-item{padding: 10px;}
+  #box-data-item{
+    width: 100%;
+  }
+  #sub-content-image{
+    width: 100%;
+  }
 
-.item-location{
-  p{
-    text-align: center;
-    color: $gray;
-    font-size: 14px;
-    position: relative;
+  #sub-box-data-item{
+    max-width: 100%;
+  }
+  #box-data-item{
+    padding-left: 0px;
   }
 }
-

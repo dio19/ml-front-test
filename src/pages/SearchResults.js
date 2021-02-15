@@ -18,7 +18,7 @@ export default function SearchResults() {
 
                 <div>
                     <div className='row'>
-                        <div className="col-12 no-padd-phone">
+                        <div style={{paddingLeft: '0px'}} className="col-12 no-padd-phone">
                             <Breadcrumb categories={results.categories}/>
                         </div>
                     </div>

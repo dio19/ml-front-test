@@ -3,7 +3,7 @@ import { MlContext } from './context/MlContext';
 import SearchResults from "./pages/SearchResults";
 import { Switch, Route } from 'react-router-dom';
 import Searcher from "./components/Searcher";
-import ItemDetail from "./components/ItemDetail";
+import Item from "./pages/Item";
 import Loader from './components/tools/Loader';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
                 loading ? <Loader /> :
                     <Switch>
                         <Route exact path="/items" component={SearchResults} />
-                        <Route path="/items/:id" component={ItemDetail} />
+                        <Route path="/items/:id" component={Item} />
                     </Switch>
             }
             
