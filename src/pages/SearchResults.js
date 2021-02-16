@@ -6,15 +6,17 @@ import Layout from '../components/Layout';
 import ResultsList from '../components/ResultsList';
 import Breadcrumb from '../components/tools/Breadcrumb';
 import Message from "../components/tools/Message";
+import Loader from '../components/tools/Loader';
 
 export default function SearchResults() {
 
-    const { results } = useContext(MlContext);
+    const { results, loading } = useContext(MlContext);
 
     return (
         <Layout>
 
-            {results.items && results.items.length ?
+            {loading ? <Loader /> :
+            results.items && results.items.length ?
 
                 <div>
                     <div className='row'>

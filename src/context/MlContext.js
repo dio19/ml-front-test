@@ -7,28 +7,7 @@ function MlProvider({defaultValue = [], children}) {
 
     let history = useHistory();
     const [ results, setResults ] = useState(defaultValue);
-    const [ dataItem, setDataItem ] = useState({ error: '', data: {} })
     const [ loading, setLoading ] = useState(false);
-
-    const getItem = (id) => {
-        setLoading(true);
-        fetch(`http://localhost:4000/api/items/${id}`)
-        .then(response => response.json())
-        .then(response => {
-            if(response === 'not found'){
-                setLoading(false);
-                setDataItem({...dataItem, error: 'No pudimos encontrar el artículo que estabas buscando. Probá nuevamente más tarde' });
-            } else {
-                setLoading(false);
-                setDataItem({...dataItem, data: response });
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            setLoading(false);
-            setDataItem({...dataItem, error: 'Ups! Algo salió mal. Probá nuevamente más tarde'});
-        });
-    }
 
     const getResults = (query) => {
         setLoading(true);
@@ -54,7 +33,7 @@ function MlProvider({defaultValue = [], children}) {
     }
 
     return (
-        <MlContext.Provider value={{ results, dataItem, getResults, getItem, loading }}>
+        <MlContext.Provider value={{ results, getResults, setLoading, loading }}>
             {children}
         </MlContext.Provider>
     )

@@ -1,40 +1,55 @@
-import React, { useContext, useEffect }  from 'react'
-import { MlContext } from '../context/MlContext';
+import React, { useEffect, useState }  from 'react'
 import { useParams } from 'react-router-dom';
 
 import Layout from '../components/Layout';
 import Breadcrumb from '../components/tools/Breadcrumb';
 import Message from '../components/tools/Message';
 import ItemDetail from '../components/ItemDetail';
+import Loader from '../components/tools/Loader';
 
-export default function Item({ props }) {
+
+export default function Item() {
 
     const { id } = useParams();
-    const { getItem, dataItem } = useContext(MlContext);
-
-    const data = dataItem.data
+    const [ loading, setLoading ] = useState(true)
+    const [ data, setData ] = useState({});
+    const [ error, setError ] = useState('');
     
     useEffect(() => {
-        if(data.id && id && id !== data.id){
-            getItem(id)
-        } else if (!data.id){
-            getItem(id)
-        }
-    }, [data.id, dataItem.data.id, getItem, id])
+            setLoading(true);
+            fetch(`http://localhost:4000/api/items/${id}`)
+            .then(response => response.json())
+            .then(response => {
+                if(response === 'not found'){
+                    setLoading(false);
+                    setError('No se encontro un producto con ese id!');
+                } else {
+                    setLoading(false);
+                    setData(response);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                console.log('entre catch')
+                setLoading(false);
+                setError('Hubo un problema en el servidor, estamos trabajando para resolverlo!');
+            });
+    }, [id, setLoading])
 
         return (
             <Layout>
-                {data !== {} && data.price ?
-                    <div>
-                        <div className='row'>
-                            <div style={{paddingLeft: '0px'}} className="col-12 no-padd-phone">
-                                <Breadcrumb categories={data.categories}/>
+                {loading ? <Loader /> :
+                error ?<Message error={error}/>
+                    : data !== {} && data.price ?
+                        <div>
+                            <div className='row'>
+                                <div style={{paddingLeft: '0px'}} className="col-12 no-padd-phone">
+                                    <Breadcrumb categories={data.categories}/>
+                                </div>
                             </div>
+                            <ItemDetail data={data} />
                         </div>
-                        <ItemDetail data={data} />
-                    </div>
-                    : dataItem.error ?<Message error={data}/>
-                    :<Message error='Lo sentimos, hubo un problema interno del servidor, estamos trabajando en ello, volve a intentarlo en unos instantes'/>
+                    :<Message error='No se encontro un producto con ese id!'/>
                 }
 
             </Layout>
