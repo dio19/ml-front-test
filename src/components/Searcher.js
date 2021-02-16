@@ -34,7 +34,7 @@ export default function Searcher({ onSubmit }) {
                                 <div id="box-input-search">
                                     <form onSubmit={(event) => handleSubmit(event)}>
                                         <input type="text" placeholder="Nunca dejes de buscar" value={searchValue} onChange={handleChange}/>
-                                        <button id="button-search" type="submit"><img src=".././assets/ic_Search.png" alt=""/></button>
+                                        <button id="button-search" type="submit" />
                                     </form>
                                 </div>
                             </div>

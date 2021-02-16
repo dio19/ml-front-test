@@ -10,7 +10,7 @@ export default function ResultsList({ item }){
             </div>
 
             <div id="title-item-box-list" className='col-lg-7 col-md-6 col-sm-6 col-5'>
-                <div id="price-item-box-list">$ {item.price.amount} {item.free_shipping && <img src="../assets/ic_shipping.png" alt=""/>}</div>
+                <div id="price-item-box-list">$ {item.price.amount} {item.free_shipping && <button id="item-price-free-shipping" />}</div>
                 <div id="title-item-box-list">{item.title}</div>
             </div>
 

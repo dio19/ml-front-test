@@ -12,6 +12,10 @@ a:hover{
   font-size:$pixel24;
   margin-bottom:$pixel32;
 }
+.price-item-box-list>img{
+  height: 5px;
+  height: 5px;
+}
 #title-item-box-list{
   display: flex;
   justify-content: center;
@@ -37,6 +41,14 @@ a:hover{
   border-radius:$pixel4;
   transition: 0.5s;
 }
+
+#item-price-free-shipping{
+  border-style: none;
+  width: 20px;
+  height: 20px;
+  background: no-repeat url("../assets/ic_shipping.png");
+}
+
 #title-item-box-list{
   color:black;
   font-size:$pixel18
