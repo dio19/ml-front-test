@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from 'react'
+import React, { useCallback, useEffect, useState }  from 'react'
 import { useParams } from 'react-router-dom';
 
 import Layout from '../components/Layout';
@@ -14,27 +14,32 @@ export default function Item() {
     const [ loading, setLoading ] = useState(true)
     const [ data, setData ] = useState({});
     const [ error, setError ] = useState('');
+
+    const fetchItemDetail = useCallback(async () => {
+        setLoading(true);
+        const response = await fetch(`http://localhost:4000/api/items/${id}`)
+        .then(response => response.json())
+        .then(response => {
+            if(response === 'not found'){
+                setLoading(false);
+                setError('No se encontro un producto con ese id!');
+            } else {
+                setLoading(false);
+                setData(response);
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            console.log('entre catch')
+            setLoading(false);
+            setError('Hubo un problema en el servidor, estamos trabajando para resolverlo!');
+        });
+        return response
+    }, [id])
     
     useEffect(() => {
-            setLoading(true);
-            fetch(`http://localhost:4000/api/items/${id}`)
-            .then(response => response.json())
-            .then(response => {
-                if(response === 'not found'){
-                    setLoading(false);
-                    setError('No se encontro un producto con ese id!');
-                } else {
-                    setLoading(false);
-                    setData(response);
-                }
-            })
-            .catch(error => {
-                console.error(error);
-                console.log('entre catch')
-                setLoading(false);
-                setError('Hubo un problema en el servidor, estamos trabajando para resolverlo!');
-            });
-    }, [id, setLoading])
+        fetchItemDetail()
+    }, [fetchItemDetail, id, setLoading])
 
         return (
             <Layout>
