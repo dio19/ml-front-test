@@ -46,9 +46,9 @@ El detalle de producto se renderiza al hacer click en el resultado de la busqued
 
 ### Mensajes de error
 
-[03](./gif/busquedainvalida.gif)
+> ![03](./gif/busquedainvalida.gif)
 
-[04](./gif/idinvalido.gif)
+> ![04](./gif/idinvalido.gif)
 
 ### Comentarios Generales
 
