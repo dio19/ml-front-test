@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import searcherCss from '../styles/searcher.scss';
 import logo from '../assets/Logo_ML.png';
+import logo2x from '../assets/Logo_ML@2x.png';
 
 export default function Searcher({ onSubmit }) {
 
     const [searchValue, setSearchValue] = useState('');
+    const [width, setWidth] = useState(window.innerWidth);
+    const mobile = width <= 425;
+
+    useEffect(() => {
+      window.addEventListener("resize", () => {
+        setWidth(window.innerWidth);
+      });
+    }, []);
 
     const handleChange = event => {
         setSearchValue(event.target.value);
@@ -26,7 +35,7 @@ export default function Searcher({ onSubmit }) {
                             <div className=" col-3 col-sm-2 col-md-1 no-padd-xs-phone">
                                 <Link to={'/'}>
                                     <div id='box-logo-navbar'>
-                                        <img src={logo} alt="Logo Mercado Libre" />
+                                        <img id="logo-ml" src={mobile ? logo2x : logo} alt="Logo Mercado Libre" />
                                     </div>
                                 </Link>
                             </div>
